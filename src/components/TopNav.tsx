@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Search, Bell, Menu, X } from 'lucide-react'
 
 const navItems = [
   { path: '/', label: 'Dashboard' },
@@ -20,13 +21,11 @@ function TopNav() {
   return (
     <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
       <div className="flex items-center justify-between px-4 md:px-6 h-16">
-        {/* Logo */}
         <div>
           <h1 className="text-lg font-bold text-white leading-none">SOC HUB</h1>
           <p className="text-[10px] text-slate-400 leading-none mt-0.5">Learn • Analyze • Investigate</p>
         </div>
 
-        {/* Masaüstü nav - orta */}
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path
@@ -46,28 +45,25 @@ function TopNav() {
           })}
         </nav>
 
-        {/* Sağ taraf */}
         <div className="flex items-center gap-3">
-          <button className="hidden md:block text-slate-400 hover:text-white" aria-label="Search">
-            🔍
+          <button className="hidden md:flex text-slate-400 hover:text-white transition-colors" aria-label="Search">
+            <Search size={18} />
           </button>
-          <button className="hidden md:block text-slate-400 hover:text-white" aria-label="Notifications">
-            🔔
+          <button className="hidden md:flex text-slate-400 hover:text-white transition-colors" aria-label="Notifications">
+            <Bell size={18} />
           </button>
           <div className="hidden md:block w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/40" />
 
-          {/* Hamburger - sadece mobil/tablet */}
           <button
-            className="lg:hidden text-white text-2xl"
+            className="lg:hidden text-white"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            {menuOpen ? '✕' : '☰'}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobil açılır menü */}
       {menuOpen && (
         <nav className="lg:hidden flex flex-col gap-1 px-4 pb-4">
           {navItems.map((item) => {
