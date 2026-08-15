@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# 🛡️ SOC Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Öğren • Analiz Et • Araştır
 
-Currently, two official plugins are available:
+SOC Hub, siber güvenlik öğrencilerinin ve junior SOC analistlerinin
+SOC, SIEM, log analizi, phishing, threat intelligence ve MITRE ATT&CK
+konularındaki bilgilerini öğrenmesini, tekrar etmesini ve interaktif
+vakalar üzerinden uygulamasını amaçlayan bir platformdur.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎯 Projenin Amacı
 
-## React Compiler
+Bu proje, siber güvenlik bilgilerinin yalnızca okunmasını değil,
+örnek olaylar ve analiz senaryoları üzerinden uygulanmasını hedefler.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚧 Geliştirme Aşamasında
 
-## Expanding the Oxlint configuration
+- [x] İlk arayüz
+- [ ] SOC Fundamentals
+- [ ] Phishing Analysis
+- [ ] Log Analysis
+- [ ] MITRE ATT&CK Explorer
+- [ ] SOC Challenges
+- [ ] Kullanıcı ilerleme sistemi
+- [ ] Kişisel notlar
+- [ ] Backend API
+- [ ] Veritabanı
+- [ ] Authentication
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 🛠️ Teknolojiler
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+- React
+- TypeScript
+- Tailwind CSS
+- Java
+- Spring Boot
+- PostgreSQL
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 📌 Not
+
+Proje eğitim ve öğrenme amacıyla geliştirilmektedir.
