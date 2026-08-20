@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Search, Bell, Menu, X } from 'lucide-react'
+import { healthCheck } from '../lib/api'
 
 const navItems = [
   { path: '/', label: 'Dashboard' },
@@ -17,6 +18,21 @@ const navItems = [
 function TopNav() {
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [backendOnline, setBackendOnline] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    healthCheck(controller.signal)
+      .then(() => setBackendOnline(true))
+      .catch(() => {
+        if (!controller.signal.aborted) {
+          setBackendOnline(false)
+        }
+      })
+
+    return () => controller.abort()
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
@@ -52,6 +68,21 @@ function TopNav() {
           <button className="hidden md:flex text-slate-400 hover:text-white transition-colors" aria-label="Notifications">
             <Bell size={18} />
           </button>
+          <div
+            className="hidden md:flex items-center gap-1.5 text-[10px] text-slate-400"
+            title={backendOnline === true ? 'Backend connected' : backendOnline === false ? 'Backend unavailable' : 'Checking backend'}
+          >
+            <span
+              className={`w-2 h-2 rounded-full ${
+                backendOnline === true
+                  ? 'bg-emerald-400'
+                  : backendOnline === false
+                    ? 'bg-red-400'
+                    : 'bg-amber-400 animate-pulse'
+              }`}
+            />
+            API
+          </div>
           <div className="hidden md:block w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/40" />
 
           <button
